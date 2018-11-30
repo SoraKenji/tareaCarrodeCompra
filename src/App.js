@@ -16,6 +16,7 @@ class App extends Component {
     let items = Object.assign([], this.state.items);
     let object = items.find(c => c.id === id);
     object.cantidad++;
+    object.preciofinal = object.precio * object.cantidad;
     this.setState({ precioFinal: parseInt(this.state.precioFinal) + parseInt(object.precio) });
     this.setState({ items });
   }
@@ -24,6 +25,7 @@ class App extends Component {
     let items = Object.assign([], this.state.items);
     let object = items.find(c => c.id === id);
     object.cantidad--;
+    object.preciofinal = object.precio * object.cantidad;
     this.setState({ precioFinal: parseInt(this.state.precioFinal) - parseInt(object.precio) });
     if (parseInt(object.cantidad) <= 0) {
       if (items.length <= 1) {
